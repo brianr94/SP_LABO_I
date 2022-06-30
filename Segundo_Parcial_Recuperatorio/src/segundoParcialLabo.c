@@ -145,6 +145,7 @@ int main(void) {
 				else
 				{
 					printf("\nPrimero debe guardar el archivo para salir!!!!\n");
+					opcion=0;
 				}
 		}
 
@@ -153,7 +154,7 @@ int main(void) {
 			system("pause");
 		}
 
-	}while(opcion != 7 && flagGuardado==0);
+	}while(opcion != 7);
 
 
 
