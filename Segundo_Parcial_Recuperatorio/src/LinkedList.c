@@ -508,8 +508,12 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 }
 
 
-
-
+/* Filtra la lista con una condición, recibiendo como parámetro
+ * la función que sera la encargada de decidir si cada elemento
+ * cumple la condición (1) o no (0) y si se agrega a una nueva lista filtrada.
+ * Verificando que tanto el puntero this como el puntero a la funcion
+ * fn sean distintos de NULL. Retorna la lista nueva lista filtrada.
+ */
 LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element)){
 	LinkedList* listFilter = NULL;
 	void* auxElement = NULL;
@@ -532,6 +536,11 @@ LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element)){
 }
 
 
+/* Completa un campo del elemento, recibiendo como parámetro
+* la función que sera la encargada de calcular el valor de ese campo.
+* Verificando que tanto el puntero this como el puntero a la funcion
+* fn sean distintos de NULL. Retorna la lista completa.
+*/
 LinkedList* ll_map(LinkedList* this, void (*fn)(void* element)){
 	void* auxElement = NULL;
 	int len;

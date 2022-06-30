@@ -145,6 +145,9 @@ int controller_listFilter(LinkedList* pArrayListServicio)
 	int retorno=-1;
 	int opcion;
 	LinkedList* listaFiltrada = NULL;
+	int (*pFuncion)(void* elemento);
+
+	pFuncion=NULL;
 
 	if(pArrayListServicio != NULL)
 	{
@@ -162,22 +165,21 @@ int controller_listFilter(LinkedList* pArrayListServicio)
 		switch(opcion)
 		{
 			case 1:
-				listaFiltrada=ll_filter(pArrayListServicio, eServicio_filterByMinorista);
+				pFuncion=eServicio_filterByMinorista;
 				break;
 			case 2:
-				listaFiltrada=ll_filter(pArrayListServicio, eServicio_filterByMayorista);
+				pFuncion=eServicio_filterByMayorista;
 				break;
 			case 3:
-				listaFiltrada=ll_filter(pArrayListServicio, eServicio_filterByExportar);
+				pFuncion=eServicio_filterByExportar;
 				break;
 		}
 
-		if(listaFiltrada != NULL)
-		{
-			controller_saveAsText("listaFiltrada.csv",listaFiltrada);
-			printf("Lista filtrada por clase y guardada con exito.\n");
-			retorno = 0;
-		}
+		listaFiltrada=ll_filter(pArrayListServicio, pFuncion);
+
+		controller_saveAsText("listaFiltrada.csv",listaFiltrada);
+		printf("Lista filtrada por clase y guardada con exito.\n");
+
 	}
 
 

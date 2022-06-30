@@ -51,7 +51,9 @@ int main(void) {
 											"4. Filtrar por Tipo\n"
 											"5. Mostrar servicios\n"
 											"6. Guardar Servicios\n"
-											"7. Salir\n", 1, 7);
+											"7. Salir\n"
+											"--------------------------\n"
+											"Error. Ingrese una opcion correcta: ", 1, 7);
 
 
 		switch(opcion)

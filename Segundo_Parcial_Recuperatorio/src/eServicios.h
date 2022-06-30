@@ -11,17 +11,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define TAMSTRING 50
-
-#define MINORISTA 1
-#define MAYORISTA 2
-#define EXPORTAR 3
-
 
 typedef struct
 {
 	int idServicio;
-	char descripcion[TAMSTRING];
+	char descripcion[50];
 	int tipo;
 	float precioUnitario;
 	int cantidad;

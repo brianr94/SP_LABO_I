@@ -300,7 +300,7 @@ int eServicio_filterByMayorista(void* eServicio)
 
 		eServicio_getTipo(pServicio, &mayoristaAux);
 
-		if(mayoristaAux == MAYORISTA)
+		if(mayoristaAux == 2)
 		{
 			retorno =0;
 		}
@@ -320,7 +320,7 @@ int eServicio_filterByMinorista(void* eServicio)
 
 		eServicio_getTipo(pServicio, &minoristaAux);
 
-		if(minoristaAux == MINORISTA)
+		if(minoristaAux == 1)
 		{
 			retorno =0;
 		}
@@ -332,6 +332,7 @@ int eServicio_filterByExportar(void* eServicio)
 {
 	int retorno=-1;
 	int exportarAux;
+
 	eServicios* pServicio;
 
 	if(eServicio != NULL)
@@ -340,7 +341,7 @@ int eServicio_filterByExportar(void* eServicio)
 
 		eServicio_getTipo(pServicio, &exportarAux);
 
-		if(exportarAux == EXPORTAR)
+		if(exportarAux == 3)
 		{
 			retorno =0;
 		}
