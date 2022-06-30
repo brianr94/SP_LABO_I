@@ -31,7 +31,6 @@ int parser_servicioFromText(FILE* pFile , LinkedList* pArrayListServicios)
 	if(pFile != NULL && pArrayListServicios != NULL)
 	{
 
-
 		fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", id, descripcion, tipo, precio, cantidad, total);
 
 		do

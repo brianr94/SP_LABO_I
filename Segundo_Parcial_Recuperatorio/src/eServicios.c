@@ -357,13 +357,15 @@ void eServicio_calcularPrecioTotal(void* eServicio)
 
 	if(eServicio != NULL)
 	{
-		pServicio = ((eServicios*)eServicio);
+		pServicio = (eServicios*)eServicio;
 
-		eServicio_getTotal(pServicio, &totalAux);
+
 		eServicio_getCantidad(pServicio, &cantidadAux);
 		eServicio_getPrecioUnitario(pServicio, &precioAux);
 
 		totalAux = cantidadAux * precioAux;
+
+		eServicio_setTotal(pServicio, totalAux);
 	}
 
 }

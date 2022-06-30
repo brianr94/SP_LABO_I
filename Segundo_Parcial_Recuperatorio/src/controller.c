@@ -28,29 +28,20 @@ int controller_loadFromText(char* path , LinkedList* pArrayListServicio)
 
 	int retorno=-1;
 	char file[50];
-	int comparacion;
-	int archivoEncotrado=-1;
 	FILE* pFile;
 
-	comparacion=strcmp(file,path);
 	do
 	{
-		if(pedirCadena(file, "Ingrese el nombre de archivo a cargar: ", "Ingrese el nombre de achivo correctamente: ", 50)==0)
-		{
-			archivoEncotrado=0;
-			break;
-		}
-
-	}while(comparacion != 0 && archivoEncotrado!=0);
+		pedirCadena(file, "Ingrese el nombre de archivo a cargar: ", "Ingrese el nombre de achivo correctamente: ", 50);
 
 
+	}while(strcmp(file,path) != 0);
 
-	pFile= fopen(path,"r");
 
 	if(path != NULL && pArrayListServicio != NULL)
 	{
+		pFile= fopen(path,"r");
 		retorno=parser_servicioFromText(pFile, pArrayListServicio);
-
 	}
 
 
