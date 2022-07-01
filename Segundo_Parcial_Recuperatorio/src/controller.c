@@ -48,6 +48,23 @@ int controller_loadFromText(char* path , LinkedList* pArrayListServicio)
     return retorno;
 }
 
+int controller_loadFromTextTotal(char* path , LinkedList* pArrayListServicio)
+{
+
+	int retorno=-1;
+	FILE* pFile;
+
+	if(path != NULL && pArrayListServicio != NULL)
+	{
+		pFile= fopen(path,"r");
+		retorno=parser_servicioFromText(pFile, pArrayListServicio);
+	}
+
+
+    return retorno;
+}
+
+
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -218,6 +235,48 @@ int controller_totalPriceAssignment(LinkedList* pArrayListServicio)
 		retorno = 0;
 	}
 
+
+	return retorno;
+}
+
+int controller_listFilterByTotal(LinkedList* pArrayListServicio)
+{
+	int retorno=-1;
+	LinkedList* listaFiltrada = NULL;
+
+		if(pArrayListServicio != NULL)
+		{
+			listaFiltrada=ll_filter(pArrayListServicio, eServicio_buscarTotalMayor);
+
+
+			if(listaFiltrada != NULL)
+			{
+				controller_saveAsText("listaFiltradaPorTotales.csv",listaFiltrada);
+				printf("Lista filtrada por clase y guardada con exito.\n");
+			}
+
+
+		}
+
+	return retorno;
+}
+
+int controller_TotalConDescuento(LinkedList* pArrayListServicio)
+{
+	int retorno=-1;
+
+	if(pArrayListServicio != NULL)
+	{
+
+		if(controller_loadFromTextTotal("listaFiltradaPorTotales", pArrayListServicio)!= -1)
+		{
+			ll_map(pArrayListServicio, eServicio_totalConDescuento);
+		}
+
+
+		controller_saveAsText("listaFiltradaPorTotales", pArrayListServicio);
+		retorno=0;
+	}
 
 	return retorno;
 }

@@ -25,9 +25,11 @@ int main(void) {
 	int opcion;
 	int flagCargaTexto;
 	int flagGuardado;
+	int flagCargaTotal;
 
 	flagGuardado=0;
 	flagCargaTexto=0;
+	flagCargaTotal=0;
 
 	listaServicios=ll_newLinkedList();
 
@@ -41,7 +43,8 @@ int main(void) {
 											"4. Filtrar por Tipo\n"
 											"5. Mostrar servicios\n"
 											"6. Guardar Servicios\n"
-											"7. Salir\n"
+											"7. Filtrar por totales\n"
+											"8. Aplicar descuentos a los totales(10%)\n"
 											"------------------------\n"
 											"Ingrese una opcion: ",
 											"------------------------\n"
@@ -51,9 +54,11 @@ int main(void) {
 											"4. Filtrar por Tipo\n"
 											"5. Mostrar servicios\n"
 											"6. Guardar Servicios\n"
-											"7. Salir\n"
+											"7. Filtrar por totales\n"
+											"8. Aplicar descuentos a los totales(10%)\n"
+											"9. Salir\n"
 											"--------------------------\n"
-											"Error. Ingrese una opcion correcta: ", 1, 7);
+											"Error. Ingrese una opcion correcta: ", 1, 9);
 
 
 		switch(opcion)
@@ -138,6 +143,33 @@ int main(void) {
 				}
 				break;
 			case 7:
+				if(flagCargaTexto==1)
+				{
+					controller_listFilterByTotal(listaServicios);
+					flagCargaTotal=1;
+
+				}
+				else
+				{
+					printf("\nPrimero debe cargar el archivo!!!\n");
+				}
+
+				break;
+
+			case 8:
+				if(flagCargaTotal==1)
+				{
+					controller_TotalConDescuento(listaServicios);
+				}
+				else
+				{
+					printf("\nPrimero debe realizar la opciion 7\n");
+				}
+
+
+				break;
+
+			case 9:
 				if(flagGuardado==1)
 				{
 					printf("\nEligio Salir del Programa!!!!\n");
@@ -149,12 +181,12 @@ int main(void) {
 				}
 		}
 
-		if(opcion != 7)
+		if(opcion != 9)
 		{
 			system("pause");
 		}
 
-	}while(opcion != 7);
+	}while(opcion != 9);
 
 
 

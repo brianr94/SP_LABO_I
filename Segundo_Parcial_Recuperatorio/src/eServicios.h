@@ -49,10 +49,13 @@ int eServicio_getTotal(eServicios* this,float* total);
 void eServicio_imprimirServicio(eServicios* this);
 int eServicio_sortByDescripcion(void* serviciosI, void* serviciosJ);
 void eServicio_calcularPrecioTotal(void* eServicio);
+int eServicio_buscarTotalMayor(void* eServicio);
+void eServicio_totalConDescuento(void* eServicio);
 
 int eServicio_filterByMinorista(void* eServicio);
 int eServicio_filterByMayorista(void* eServicio);
 int eServicio_filterByExportar(void* eServicio);
+
 
 
 void eServicio_borrarServicio(eServicios* this);

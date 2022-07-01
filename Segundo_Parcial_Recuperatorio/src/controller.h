@@ -16,6 +16,9 @@ int controller_ListServicios(LinkedList* pArrayListServicio);
 int controller_listFilter(LinkedList* pArrayListServicio);
 int Controller_SortByDescription(LinkedList* pArrayListServicio);
 int controller_totalPriceAssignment(LinkedList* pArrayListServicio);
+int controller_listFilterByTotal(LinkedList* pArrayListServicio);
+int controller_loadFromTextTotal(char* path , LinkedList* pArrayListServicio);
+int controller_TotalConDescuento(LinkedList* pArrayListServicio);
 
 int controller_loadFromText(char* path , LinkedList* pArrayListServicio);
 

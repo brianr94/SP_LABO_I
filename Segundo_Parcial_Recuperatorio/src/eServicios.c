@@ -370,3 +370,50 @@ void eServicio_calcularPrecioTotal(void* eServicio)
 	}
 
 }
+
+int eServicio_buscarTotalMayor(void* eServicio)
+{
+	eServicios* pServicio;
+	int retorno=-1;
+
+	float total;
+
+
+	if(eServicio != NULL)
+	{
+
+		pServicio= (eServicios*)eServicio;
+
+		eServicio_getTotal(pServicio, &total);
+
+		if(total>1000)
+		{
+			retorno=0;
+		}
+
+	}
+
+	return retorno;
+}
+
+void eServicio_totalConDescuento(void* eServicio)
+{
+	eServicios* pServicio;
+	float total;
+	float descuento;
+
+
+	if(eServicio != NULL)
+	{
+		pServicio=(eServicios*)eServicio;
+
+		eServicio_getTotal(pServicio, &total);
+
+		descuento=total*1.10;
+		total= total-descuento;
+
+		eServicio_setTotal(pServicio, total);
+
+	}
+
+}
