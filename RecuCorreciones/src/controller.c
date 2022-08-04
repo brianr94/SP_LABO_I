@@ -16,6 +16,42 @@
 #include "LinkedList.h"
 
 
+/** \brief Carga los datos de los servicios desde el archivo data.csv (modo texto) validadando la entrada del nombre del archivo.
+ *
+ * \param path char*
+ * \param pArrayListPassenger LinkedList*
+ * \return int
+ *
+ */
+int controller_validateLoadFromText(char* path , LinkedList* pArrayListServicio)
+{
+
+	int retorno=-1;
+	char file[51];
+	FILE* pFile;
+
+	pedirCadena(file, "Ingrese el archivo a cargar(incluir el formato en el nombre .csv): ", "Error. Ingrese nuevamente el nombre del archivo: ", 51);
+
+	if(strcmp(path,file) != 0)
+	{
+		printf("\nArchivo ingresado no existe!!!!. Ingrese nuevamente\n");
+	}
+	else
+	{
+		printf("\nArchivo encontrado!!!\n");
+
+		pFile= fopen(path,"r");
+
+		if(path != NULL && pArrayListServicio != NULL)
+		{
+			retorno=parser_servicioFromText(pFile, pArrayListServicio);
+		}
+
+	}
+
+    return retorno;
+}
+
 /** \brief Carga los datos de los servicios desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -23,11 +59,9 @@
  * \return int
  *
  */
-int controller_loadFromText(char* path , LinkedList* pArrayListServicio)
+int controller_cargaDeArhivoTexto(char* path , LinkedList* pArrayListServicio)
 {
-
-	int retorno=-1;
-	//char file[50];
+	int retorno=1;
 	FILE* pFile;
 
 	pFile= fopen(path,"r");
@@ -35,28 +69,12 @@ int controller_loadFromText(char* path , LinkedList* pArrayListServicio)
 	if(path != NULL && pArrayListServicio != NULL)
 	{
 		retorno=parser_servicioFromText(pFile, pArrayListServicio);
+
 	}
 
 
     return retorno;
 }
-
-int controller_loadFromTextTotal(char* path , LinkedList* pArrayListServicio)
-{
-
-	int retorno=-1;
-	FILE* pFile;
-
-	if(path != NULL && pArrayListServicio != NULL)
-	{
-		pFile= fopen(path,"r");
-		retorno=parser_servicioFromText(pFile, pArrayListServicio);
-	}
-
-
-    return retorno;
-}
-
 
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
  *
@@ -262,11 +280,13 @@ int controller_TotalConDescuento(LinkedList* pArrayListServicio, char* path)
 	if(pArrayListServicio != NULL)
 	{
 
-		controller_loadFromText(path, pArrayListServicio);
-		listaFiltrada=ll_map(pArrayListServicio, eServicio_totalConDescuento);
+		if(controller_cargaDeArhivoTexto(path, pArrayListServicio) != -1)
+		{
+			listaFiltrada=ll_map(pArrayListServicio, eServicio_totalConDescuento);
+		}
 
 
-		if(listaFiltrada!= NULL)
+		if(listaFiltrada != NULL)
 		{
 			controller_saveAsText("listaConDescuento.csv", pArrayListServicio);
 			retorno=0;

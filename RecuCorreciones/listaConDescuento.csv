@@ -1,0 +1,20 @@
+id_servicio,descripcion,tipo,precioUnitario,cantidad,totalServicio
+51,ensamble vestido,2,860.00,25,19350.00
+52,costura correa mochila,3,450.25,60,24313.50
+53,cierre pantalon,1,600.00,4,2160.00
+54,boton camisa,2,145.00,120,15660.00
+55,forro piloto,3,324.66,156,45582.27
+56,vicera,3,450.00,180,72900.00
+57,costura remera,3,650.00,60,35100.00
+58,ensamble bolso,3,450.25,80,32418.00
+59,cambio cierre,1,700.00,2,1260.00
+63,boton camisa,2,145.00,120,15660.00
+64,ensamble bolso,3,450.25,50,20261.25
+65,cambio cierre,1,700.00,2,1260.00
+66,forro campera,3,365.60,150,49356.00
+68,vicera,3,450.00,160,64800.00
+70,cierre pantalon,1,600.00,2,1080.00
+71,ensamble bolso,3,450.25,40,16209.00
+72,boton camisa,2,145.00,60,7830.00
+73,cambio boton,2,70.00,25,1575.00
+74,ensamble vestido,2,860.00,15,11610.00

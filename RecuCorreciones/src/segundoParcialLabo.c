@@ -22,6 +22,7 @@ int main(void) {
 	setbuf(stdout,NULL);
 
 	LinkedList* listaServicios;
+	LinkedList* listaFiltrada;
 	int opcion;
 	int flagCargaTexto;
 	int flagGuardado;
@@ -32,6 +33,7 @@ int main(void) {
 	flagCargaTotal=0;
 
 	listaServicios=ll_newLinkedList();
+	listaFiltrada=ll_newLinkedList();
 
 	do
 	{
@@ -67,8 +69,10 @@ int main(void) {
 			case 1:
 				if(flagCargaTexto==0)
 				{
-					controller_loadFromText("data.csv", listaServicios);
-					flagCargaTexto=1;
+					if(controller_validateLoadFromText("data.csv", listaServicios) != -1)
+					{
+						flagCargaTexto=1;
+					}
 				}
 				else
 				{
@@ -160,11 +164,11 @@ int main(void) {
 			case 8:
 				if(flagCargaTotal==1)
 				{
-					controller_TotalConDescuento(listaServicios, "listaFiltradaPorTotales.csv");
+					controller_TotalConDescuento(listaFiltrada, "listaFiltradaPorTotales.csv");
 				}
 				else
 				{
-					printf("\nPrimero debe realizar la opciion 7\n");
+					printf("\nPrimero debe realizar la opcion 7\n");
 				}
 
 

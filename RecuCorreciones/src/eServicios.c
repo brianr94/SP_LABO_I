@@ -54,8 +54,6 @@ eServicios* eServicio_newParametros(char* idStr,char* descripcionStr, char* tipo
 
 	}
 
-
-
 	return servicio;
 }
 
@@ -410,7 +408,7 @@ void eServicio_totalConDescuento(void* eServicio)
 
 		eServicio_getTotal(pServicio, &total);
 
-		descuento=total*1.10;
+		descuento=(total*10) / 100;
 		totalDescuento= total-descuento;
 
 		eServicio_setTotal(pServicio, totalDescuento);
